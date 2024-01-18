@@ -1,0 +1,18 @@
+<div>
+    <form (ngSubmit)="sendMessage()" [formGroup]="form">
+        <div class="chat-container">
+    
+            @for (message of messages; track message.sentByUser){
+                <div class="message" [class]="{'sent': message.sentByUser, 'received': !message.sentByUser}">
+                    {{ message.content }}
+                  </div>    
+            }
+            
+          </div>
+          
+          <div class="input-container">
+            <input ngModel="newMessage" placeholder="Type a message..." />
+            <button (click)="sendMessage()">Send</button>
+          </div>
+  </form>        
+</div>
