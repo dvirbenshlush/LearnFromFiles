@@ -1,0 +1,11 @@
+.sidebar {
+    position: fixed;
+    top: 40px; /* קביעת המרחק מלמעלה, הוספת 60 פיקסלים כדי להתאים לגובה ה-header */
+    left: 0;
+    bottom: 0;
+    width: 200px; /* רוחב הסרגל */
+    background-color: #f4f4f4; /* צבע רקע */
+    padding: 20px; /* מרווח בפנים של הסרגל */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* צל מסביב */
+    z-index: 1; /* כדי לוודא שה-sidebar ישמר מעל תוכן אחר */
+}

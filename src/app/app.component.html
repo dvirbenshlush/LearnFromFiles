@@ -1,10 +1,9 @@
-<!-- <app-upload-files></app-upload-files> -->
-<!-- <app-chat></app-chat> -->
-<div>
-  <mat-tab-group>
-    <mat-tab label="First"> <app-chat></app-chat></mat-tab>
-    <mat-tab label="Second"> <app-upload-files></app-upload-files></mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
-  </mat-tab-group>
-  
+<div class="container">
+  <app-header></app-header>
+  <div class="content">
+    <app-sidebar></app-sidebar>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
