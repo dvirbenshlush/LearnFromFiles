@@ -9,7 +9,8 @@
   </div>
   
   <div class="input-container">
-    <input ngModel="newMessage" placeholder="Type a message..." />
+    
+    <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..." />
     <button (click)="sendMessage()">Send</button>
   </div>
   

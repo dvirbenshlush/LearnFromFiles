@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Signal } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { debounceTime, of } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })
@@ -13,21 +15,30 @@ export class ChatComponent {
   messages: { content: string; sentByUser: boolean }[] = [];
   newMessage: string = '';
   form!: FormGroup;
+  firstnameSignal: Signal<any> | undefined;
 
+  constructor(private fb: FormBuilder) {
+    // this.form = this.fb.group({
+    //   newMessage: new FormControl('', Validators.required),
+    // });
+    // this.firstnameSignal = toSignal(
+    //   this.form.get('firstname')?.valueChanges.pipe(debounceTime(300)) ??
+    //     of(null),
+    //   {}
+    // );
+  }
+    
   ngOnInit() {
     // Simulate receiving initial messages
     this.receiveMessage('Hello there!', false);
     this.receiveMessage('How can I help you?', false);
   }
 
+  
   sendMessage() {
-    if (this.newMessage.trim() !== '') {
-      this.messages.push({ content: this.newMessage, sentByUser: true });
-      this.newMessage = '';
-      // Simulate sending a message (you can replace this with actual API calls)
-      this.receiveMessage('How can I help you?', false);
-      this.simulateReceivedMessage();
-    }
+    console.log(this.newMessage)
+    this.receiveMessage(this.newMessage, false)
+    this.simulateReceivedMessage();
   }
   receiveMessage(content: string, sentByUser: boolean) {
     this.messages.push({ content, sentByUser });
@@ -40,4 +51,9 @@ export class ChatComponent {
     }, 2000);
   }
 
+  onSubmit() {
+
+  }
 }
+
+
