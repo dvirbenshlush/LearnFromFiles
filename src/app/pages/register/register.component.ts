@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class LoginComponent {
+export class RegisterComponent {
+  
   email: string = '';
   password: string = '';
 
   constructor(private auth: AuthService) { }
 
-  login() {
+  register() {
     if (this.email == '') {
       alert('Please enter email');
       return;
@@ -26,7 +27,7 @@ export class LoginComponent {
       return;
     }
 
-    this.auth.login(this.email, this.password);
+    this.auth.register(this.email, this.password);
 
     this.email = '';
     this.password = '';

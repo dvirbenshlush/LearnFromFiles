@@ -13,7 +13,16 @@ import { MatMenuModule } from '@angular/material/menu';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [CommonModule, RouterOutlet, UploadFilesComponent, ChatComponent, MatTabsModule, MatMenuModule, SidebarComponent, HeaderComponent]
+    imports: [
+      CommonModule, 
+      RouterOutlet, 
+      UploadFilesComponent, 
+      ChatComponent, 
+      MatTabsModule, 
+      MatMenuModule, 
+      SidebarComponent, 
+      HeaderComponent    
+    ]
 })
 export class AppComponent {
   title = 'LearnFromFiles';

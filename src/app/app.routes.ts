@@ -2,14 +2,19 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
     {
-        path: '', redirectTo: 'login', pathMatch: 'full'
+        path: '', redirectTo: 'home', pathMatch: 'full'
     },
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
     },
     // {
     //     path: '',
@@ -22,7 +27,7 @@ export const routes: Routes = [
     //     ]
     // }
     {
-        path: 'chat',
+        path: 'home',
         component: ChatComponent
     }
 ];
