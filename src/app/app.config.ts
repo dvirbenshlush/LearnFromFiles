@@ -6,18 +6,24 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { DatabaseModule, provideDatabase } from '@angular/fire/database';
+import { getDatabase } from 'firebase/database';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     provideClientHydration(), 
     importProvidersFrom(provideFirebaseApp(() => 
-      initializeApp(firebaseConfig))), 
+      initializeApp(firebaseConfig))),
+      DatabaseModule, 
       importProvidersFrom(provideAuth(() => 
         getAuth()
         )), 
-        importProvidersFrom(provideFirestore(() => 
-        getFirestore()
+      importProvidersFrom(provideAuth(() => 
+        getAuth()
+        )), 
+      importProvidersFrom(provideDatabase(() => 
+        getDatabase()
         ))
       ]
   

@@ -2,6 +2,7 @@ import { Component, Signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { debounceTime, of } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { FirestorageService } from '../../services/firestorage.service';
 
 @Component({
   selector: 'app-chat',
@@ -17,27 +18,21 @@ export class ChatComponent {
   form!: FormGroup;
   firstnameSignal: Signal<any> | undefined;
 
-  constructor(private fb: FormBuilder) {
-    // this.form = this.fb.group({
-    //   newMessage: new FormControl('', Validators.required),
-    // });
-    // this.firstnameSignal = toSignal(
-    //   this.form.get('firstname')?.valueChanges.pipe(debounceTime(300)) ??
-    //     of(null),
-    //   {}
-    // );
+  constructor(private storeService: FirestorageService) {
   }
     
   ngOnInit() {
     // Simulate receiving initial messages
     this.receiveMessage('Hello there!', false);
     this.receiveMessage('How can I help you?', false);
+    this.storeService.getMessages();
   }
 
   
   sendMessage() {
     console.log(this.newMessage)
     this.receiveMessage(this.newMessage, false)
+    this.storeService.createMessage(this.newMessage);
     this.simulateReceivedMessage();
   }
   receiveMessage(content: string, sentByUser: boolean) {

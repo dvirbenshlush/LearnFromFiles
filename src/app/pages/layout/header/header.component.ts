@@ -40,8 +40,8 @@ export class HeaderComponent {
   ngOnInit(): void {
     this.authSubscription = this.authService.getCurrentUserEmail().subscribe({
       next: email => {
-        this.userEmail = email?.split('@')[0];
-        console.error(this.userEmail);
+        this.userEmail = email?.split('@')[0];  
+        // console.error(this.userEmail);
       },
       error: err => {
         console.error(err);

@@ -21,7 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
       MatTabsModule, 
       MatMenuModule, 
       SidebarComponent, 
-      HeaderComponent    
+      HeaderComponent                                                                                                                   
+      
     ]
 })
 export class AppComponent {
