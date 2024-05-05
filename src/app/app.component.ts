@@ -7,6 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SidebarComponent } from "./pages/layout/sidebar/sidebar.component";
 import { HeaderComponent } from "./pages/layout/header/header.component";
 import { MatMenuModule } from '@angular/material/menu';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @Component({
     selector: 'app-root',

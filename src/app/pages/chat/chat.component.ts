@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@a
 import { debounceTime, of } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FirestorageService } from '../../services/firestorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -18,11 +19,14 @@ export class ChatComponent {
   form!: FormGroup;
   firstnameSignal: Signal<any> | undefined;
 
-  constructor(private storeService: FirestorageService) {
+  constructor(private storeService: FirestorageService, private router: Router) {
   }
     
   ngOnInit() {
-    // Simulate receiving initial messages
+    // if(sessionStorage.getItem('token') != 'true')
+    // {
+      // this.router.navigate(['/login']);
+    // } 
     this.receiveMessage('Hello there!', false);
     this.receiveMessage('How can I help you?', false);
     this.storeService.getMessages();

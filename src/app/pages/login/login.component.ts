@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  faUserCircle = FaIconComponent
+
 
   constructor(private auth: AuthService) { }
 

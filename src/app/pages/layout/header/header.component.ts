@@ -26,11 +26,14 @@ import { Subscription } from 'rxjs';
 })
 
 export class HeaderComponent {
+  
   userEmail: string | null | undefined;
   authSubscription: Subscription | undefined;
   username: string | undefined;
   bold = false;
   italic = false;
+  showMenu: boolean = false;
+
 
   sizes = ['Small', 'Normal', 'Large'];
   selectedSize: string | undefined = 'Normal';
@@ -54,7 +57,11 @@ export class HeaderComponent {
   }
 
   logout() {
-    console.log('logout')
+    this.authService.logout();
+  }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 
 }

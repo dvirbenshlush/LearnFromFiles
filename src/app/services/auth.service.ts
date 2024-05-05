@@ -10,6 +10,7 @@ import { Observable, map } from 'rxjs';
 export class AuthService {
 
   user$: any;
+  isLoggedIn: boolean = false;
 
 
   constructor(private auth: Auth, private router: Router) { 
@@ -19,10 +20,14 @@ export class AuthService {
   //login method
   login(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password).then(() => {
-      localStorage.setItem('token', 'true');
+      // sessionStorage.setItem('token', 'true');
+      sessionStorage.setItem('isLoggedIn', 'true');
+      this.isLoggedIn = true;
       this.router.navigate(['/home']);
     }, err => {
       alert(err.message);
+      sessionStorage.setItem('isLoggedIn', 'false');
+      this.isLoggedIn = false;
       this.router.navigate(['/login']);
     })
   }
@@ -43,6 +48,7 @@ export class AuthService {
   logout() {
     signOut(this.auth).then(() => {
       localStorage.removeItem('token');
+      sessionStorage?.removeItem('isLoggedIn')
       this.router.navigate(['/login']);
     }, err => {
       alert(err.message);
@@ -54,11 +60,22 @@ export class AuthService {
       this.auth.onAuthStateChanged(user => {
         if (user) {
           observer.next(user.email);
-        } else {
-          observer.error('User not authenticated');
+        } else if(this.router.url !== '/'){
+          console.log('this.router.url ,', this.router.url);
+          observer.error('User not authenticated, '+ user);
         }
         observer.complete();
       });
     });
   }
+
+  isLoginSuccessed() {
+    // this.user$.subscribe(response => {
+      console.log(this.user$)
+    // })
+  }
+
+  // canActivate(): Observable<boolean> {
+    // return this.auth.currentUser?.email;
+  // }
 }

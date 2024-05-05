@@ -1,39 +1,67 @@
 .chat-container {
-    height: 300px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    padding: 0px 371px 0px 250px;
-  }
-  
-  .message {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .sent {
-    background-color: #aaffaa;
-    text-align: right;
-  }
-  
-  .received {
-    background-color: #cce5ff;
-    text-align: left;
-  }
-  
-  .input-container {
-    margin-top: 10px;
-    padding: 0px 371px 0px 250px;
+  max-width: 600px; /* ניתן לשנות את הרוחב המרבי בהתאם לצרכים */
+  margin: 0 auto; /* ממריץ את התוכן לאמצע */
+}
 
-  }
-  
-  input {
-    width: 91%;
-    padding: 5px;
-    margin-right: 5px;
-  }
-  
-  button {
-    padding: 5px;
-  }
-  
+.message-container {
+  display: flex;
+  justify-content: flex-start; /* כדי לייצר הסתרה כאשר נמשיך לקרוא את הודעות */
+  margin-bottom: 10px; /* מרווח בין הודעות */
+}
+
+.message {
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-wrap: break-word; /* לפרק את הטקסט כאשר נגיע לגבול */
+  margin-bottom: 5px; /* הורדת הרווח מתחת להודעה */
+
+}
+
+.message::after {
+  content: "";
+  position: absolute;
+  bottom: -15px; /* כדי ליצור פינה למטה */
+  left: 5px; /* הזזה שמאלה */
+  border-width: 15px 15px 0 0; /* צורת הבועה */
+  border-color: #E5E5EA transparent transparent transparent; /* צבע הבועה */
+  border-style: solid;
+}
+
+.sent  {
+  background-color: #DCF8C6;
+  align-self: flex-end; /* ליישם הכל לצד ימין כאשר נשלח */
+}
+
+.received  {
+  background-color: #E5E5EA;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  max-width: 40%;
+  margin: 10px auto 0; /* ממריץ את התוכן לאמצע ומוסיף מרווח למעלה */
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  max-width: 424px;
+}
+
+.input-container button {
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background-color: #45a049;
+}
