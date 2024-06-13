@@ -1,28 +1,33 @@
 // /* app.component.css */
 
-// .container {
-//     display: flex;
-//   }
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
   
-//   app-header {
-//     z-index: 2;
-//   }
+  app-header {
+    z-index: 2;
+    flex-shrink: 0; // Prevents the header from shrinking
+
+  }
   
-//   app-sidebar {
-//     flex: 0 0 200px; /* הגדרת רוחב קבוע של 200 פיקסלים */
-//     z-index: 1;
-//   }
+  app-sidebar {
+    flex: 0 0 280px; /* הגדרת רוחב קבוע של 200 פיקסלים */
+    z-index: 1;
+    // flex-shrink: 0
+  }
   
 //   .content {
 //     flex: 1;
 //   }
-.app-header {
-    position: fixed;
-    // top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* ניתן לשנות את הערך במידת הצורך */
-  }
+// app-header {
+//     position: fixed;
+//     // top: 0;
+//     left: 0;
+//     width: 100%;
+//     z-index: 1000; /* ניתן לשנות את הערך במידת הצורך */
+//   }
   
 .main {
     width: 100%;
@@ -31,7 +36,7 @@
 .main-screen {
     height: 100vh; /* Ensure the container takes up the full height of the viewport */
     width: 216.7vh;;
-    background-image: url(../assets/whatsapp-chat3.jpg);
+    // background-image: url(../assets/whatsapp-chat3.jpg);
     background-size: cover;
     background-position: center;
   }

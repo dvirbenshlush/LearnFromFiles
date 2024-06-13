@@ -1,8 +1,8 @@
 <div class="container">
   <app-header class="app-header"></app-header>
   <div class="content main-screen w-screen h-screen flex items-center justify-center">
-    <app-sidebar></app-sidebar>
-    <div class="main">
+    <app-sidebar class="flex-shrink-0"></app-sidebar>
+    <div class="main flex-grow flex justify-end items-stretch space-x-4 overflow-auto">
       <router-outlet></router-outlet>
     </div>
   </div>

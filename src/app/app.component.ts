@@ -8,6 +8,7 @@ import { SidebarComponent } from "./pages/layout/sidebar/sidebar.component";
 import { HeaderComponent } from "./pages/layout/header/header.component";
 import { MatMenuModule } from '@angular/material/menu';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -22,8 +23,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
       MatTabsModule, 
       MatMenuModule, 
       SidebarComponent, 
-      HeaderComponent                                                                                                                   
-      
+      HeaderComponent,
+      HttpClientModule
     ]
 })
 export class AppComponent {

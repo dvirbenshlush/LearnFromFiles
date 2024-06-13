@@ -4,6 +4,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { AuthGuard, canActivateGuard } from './guard/auth.guard';
 import { RegisterComponent } from './pages/register/register.component';
+import { PropertyListComponent } from './pages/property-list/property-list.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,6 @@ export const routes: Routes = [
     // }
     {
         path: 'home',canActivate: [canActivateGuard],
-        component: ChatComponent
+        component: PropertyListComponent
     }
 ];

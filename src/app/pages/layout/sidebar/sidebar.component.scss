@@ -1,51 +1,51 @@
-.sidebar {
-    position: fixed;
-    top: 40px; /* קביעת המרחק מלמעלה, הוספת 60 פיקסלים כדי להתאים לגובה ה-header */
-    left: 0;
-    bottom: 0;
-    width: 200px; /* רוחב הסרגל */
-    background-color: #f4f4f4; /* צבע רקע */
-    padding: 20px; /* מרווח בפנים של הסרגל */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* צל מסביב */
-    z-index: 1; /* כדי לוודא שה-sidebar ישמר מעל תוכן אחר */
-}
+// .sidebar {
+//     position: fixed;
+//     top: 40px; /* קביעת המרחק מלמעלה, הוספת 60 פיקסלים כדי להתאים לגובה ה-header */
+//     left: 0;
+//     bottom: 0;
+//     width: 200px; /* רוחב הסרגל */
+//     background-color: #f4f4f4; /* צבע רקע */
+//     padding: 20px; /* מרווח בפנים של הסרגל */
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* צל מסביב */
+//     z-index: 1; /* כדי לוודא שה-sidebar ישמר מעל תוכן אחר */
+// }
 
-.example-menu {
-    display: inline-flex;
-    flex-direction: column;
-    min-width: 180px;
-    max-width: 280px;
-    background-color: rgb(255, 255, 255);
-    padding: 6px 0;
-  }
+// .example-menu {
+//     display: inline-flex;
+//     flex-direction: column;
+//     min-width: 180px;
+//     max-width: 280px;
+//     background-color: rgb(255, 255, 255);
+//     padding: 6px 0;
+//   }
   
-  .example-menu-item {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
+//   .example-menu-item {
+//     background-color: transparent;
+//     cursor: pointer;
+//     border: none;
   
-    user-select: none;
-    min-width: 64px;
-    line-height: 36px;
-    padding: 0 16px;
+//     user-select: none;
+//     min-width: 64px;
+//     line-height: 36px;
+//     padding: 0 16px;
   
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex: 1;
-  }
+//     display: flex;
+//     align-items: center;
+//     flex-direction: row;
+//     flex: 1;
+//   }
   
-  .example-menu-item:hover {
-    background-color: rgb(208, 208, 208);
-  }
+//   .example-menu-item:hover {
+//     background-color: rgb(208, 208, 208);
+//   }
   
-  .example-menu-item:active {
-    background-color: rgb(170, 170, 170);
-  }
+//   .example-menu-item:active {
+//     background-color: rgb(170, 170, 170);
+//   }
 
-  .example-dt:hover {
-    color: cadetblue;
-    font-size: larger;
-    border: 1px solid black;
-  }
+//   .example-dt:hover {
+//     color: cadetblue;
+//     font-size: larger;
+//     border: 1px solid black;
+//   }
   
