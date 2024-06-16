@@ -8,3 +8,7 @@ export const firebaseConfig = {
     appId: "1:374397769308:web:3fd76eca3c377724213899",
     measurementId: "G-4YVL1TFDWW"
 };
+
+export const googleMap = {
+    apiKey: 'AIzaSyDWOxwaGmjyIC-X0H6yEV2YKRqNP6lvqKI'
+}

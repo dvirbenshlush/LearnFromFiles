@@ -9,6 +9,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { DatabaseModule, provideDatabase } from '@angular/fire/database';
 import { getDatabase } from 'firebase/database';
 import { provideHttpClient } from '@angular/common/http';
+// import { AgmCoreModule } from '@agm/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [

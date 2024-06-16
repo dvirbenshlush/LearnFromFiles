@@ -3,13 +3,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  selector: 'app-property-card',
+  selector: 'app-home-card',
   standalone: true,
   imports: [MatCardModule, MatButtonModule],
-  templateUrl: './property-card.component.html',
-  styleUrl: './property-card.component.scss'
+  templateUrl: './home-card.component.html',
+  styleUrl: './home-card.component.scss'
 })
-export class PropertyCardComponent {
+export class HomeCardComponent {
   @Input() data: any;
 
 }

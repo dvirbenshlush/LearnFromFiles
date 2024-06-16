@@ -4,7 +4,8 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { AuthGuard, canActivateGuard } from './guard/auth.guard';
 import { RegisterComponent } from './pages/register/register.component';
-import { PropertyListComponent } from './pages/property-list/property-list.component';
+import { HomeListComponent } from './pages/home-list/home-list.component';
+import { HomeDetailsComponent } from './pages/home-details/home-details.component';
 
 export const routes: Routes = [
     {
@@ -29,7 +30,20 @@ export const routes: Routes = [
     //     ]
     // }
     {
-        path: 'home',canActivate: [canActivateGuard],
-        component: PropertyListComponent
+        path: 'home',
+        canActivate: [canActivateGuard],
+        component: HomeListComponent
+    },
+    {
+        path: 'home/FindYourHouse',
+        canActivate: [canActivateGuard],
+        component: HomeListComponent
+    },
+    { 
+        path: 'home/FindYourHouse/:id', 
+        canActivate: [canActivateGuard], 
+        component: HomeDetailsComponent 
     }
+
+
 ];
