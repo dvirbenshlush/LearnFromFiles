@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="map-container">
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </div>
+
+    <div class="content-container custom-dialog">
+        <h2 mat-dialog-title>Dialog Title</h2>
+        <mat-dialog-content>
+            <p>Dialog content goes here.</p>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-button (click)="onClose()">Close</button>
+        </mat-dialog-actions>
+    </div>
+
+    <div class="carousel-container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    @for (img of houseImagesArray; track $index){
+
+                        <img [src]="img" class="d-block w-100" alt="Image 1">
+                    }
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+  

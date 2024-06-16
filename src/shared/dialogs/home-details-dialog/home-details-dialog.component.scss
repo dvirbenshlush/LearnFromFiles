@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+  }
+  
+  .map-container {
+    width: 30%; /* או כל ערך של רוחב שברצונך */
+    position: relative; /* אם אתה משתמש במפה במעמד מוחלט */
+    padding-bottom: 10px; /* לדוגמה */
+
+  }
+  
+  .content-container {
+    width: 50%; /* או כל ערך של רוחב שברצונך */
+    /* אם אתה רוצה שהתוכן יהיה צמוד למפה, כדאי להשתמש ב padding כדי להפריד בין השניים */
+    padding-left: 10px; /* לדוגמה */
+  }
+  

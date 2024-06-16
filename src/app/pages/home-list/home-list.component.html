@@ -2,7 +2,7 @@
     @for (property of properties; track $index){
         <div class="w-full  dark:text-gray-800   ">
             <div class="w-full p-2">
-                <app-home-card (click)="redirectToHomeDetails($index)" [data]="property"></app-home-card>
+                <app-home-card (click)="openDialog($index)" [data]="property"></app-home-card>
             </div>
         </div>
     }            
