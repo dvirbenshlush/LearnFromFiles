@@ -1,42 +1,63 @@
-<div class="container">
-    <div class="map-container">
-        <div id="map" style="height: 400px; width: 100%;"></div>
+<button mat-icon-button mat-dialog-close (click)="onClose()" style="align-self: flex-end; margin: 8px;">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="container" style="display: flex; flex-direction: row; justify-content: flex-start;">
+
+    <div style="display: flex; flex-direction: column;">
+        <div class="carousel-container" style=" width: 300px;">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
+                            @for (img of houseImagesArray; track $index){
+                            <div ngxSlickItem>
+                                <img [src]="img" class="d-block" alt="Image {{$index}}"
+                                    style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            }
+                        </ngx-slick-carousel>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="map-container">
+                <div id="map" style="height: 200px; width: 300px "></div>
+            </div>
+
+        </div>
     </div>
 
+    <!-- Content container goes here -->
     <div class="content-container custom-dialog">
-        <h2 mat-dialog-title>Dialog Title</h2>
+        <h1 mat-dialog-title>{{data.DisplayAddress}}</h1>
+        <h2 mat-dialog-title>Price: {{data.Price}} ₪</h2>
         <mat-dialog-content>
-            <p>Dialog content goes here.</p>
+            @if (showMore) { <p>{{data.Info}}</p>
+                <p [ngClass]="{'collapsed': !showMore}">
+                    {{data.Info}}
+                    <span class="see-more" (click)="showMore = !showMore">{{showMore ? 'See less' : 'See more'}}</span>
+                </p>
+            }
+            @else {
+                <p [ngClass]="{'collapsed': !showMore}">
+                    {{data.Info | slice:0:100}}
+                    <span class="see-more" (click)="showMore = !showMore">{{showMore ? 'See less' : 'See more'}}</span>
+                </p>
+            }
+
         </mat-dialog-content>
         <mat-dialog-actions>
-            <button mat-button (click)="onClose()">Close</button>
         </mat-dialog-actions>
     </div>
 
-    <div class="carousel-container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    @for (img of houseImagesArray; track $index){
 
-                        <img [src]="img" class="d-block w-100" alt="Image 1">
-                    }
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
 </div>
-  

@@ -61,7 +61,6 @@ export class AuthService {
         if (user) {
           observer.next(user.email);
         } else if(this.router.url !== '/'){
-          console.log('this.router.url ,', this.router.url);
           observer.error('User not authenticated, '+ user);
         }
         observer.complete();

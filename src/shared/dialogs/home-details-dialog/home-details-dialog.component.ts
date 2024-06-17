@@ -1,18 +1,22 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { MatDialogActions ,MatDialogContent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { MatIconModule }  from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home-details-dialog',
   standalone: true,
-  imports: [MatDialogContent, MatDialogActions],
+  imports: [MatDialogContent, MatDialogActions, SlickCarouselModule, MatIconModule, CommonModule],
   templateUrl: './home-details-dialog.component.html',
   styleUrl: './home-details-dialog.component.scss'
 })
 export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
 
   loader = new Loader({
-      apiKey: "AIzaSyDWOxwaGmjyIC-X0H6yEV2YKRqNP6lvqKI",
+      apiKey: environment.GOOGLE_MAPS_API_KEY,
       version: "weekly",
       // ...additionalOptions,
   });
@@ -20,6 +24,34 @@ export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
   homeDetails!: any;
   options!: google.maps.Map;
   houseImagesArray: any;
+  slideConfig = {
+    sildesToShow: 1,
+    sildesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+      "responsive": [{
+        "breakpoint": 992,
+        "settings": {
+          "slidesToShow": 1,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "arrows": true,
+        }
+      },
+      {
+        "breakpoint": 768,
+        "settings": {
+          "slidesToShow": 1,
+          "slidesToScroll": 1,
+          "infinite": true,
+          "arrows": true,
+        }
+      }
+    ]   
+  }
+  showMore: boolean = this.data.Info.length <= 100;
+
 
   constructor(public dialogRef: MatDialogRef<HomeDetailsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { 
     
@@ -28,7 +60,6 @@ export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
   
     this.houseImagesArray = this.data.images;  
-    console.log(this.houseImagesArray); 
   }
 
   ngAfterViewInit(): void {
@@ -47,7 +78,7 @@ export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
   }
 
   onClose() {
-    console.log('Dialog closed');
+    this.dialogRef.close();
   }
       
 }
