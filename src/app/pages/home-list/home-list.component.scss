@@ -3,3 +3,9 @@
     overflow: auto;
     margin-top: calc(100vh - 84.8vh);
 }
+
+.pagination {
+    display: flex;
+    padding-left: 400px;
+    list-style: none;
+}

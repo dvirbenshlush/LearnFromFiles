@@ -16,8 +16,8 @@ export class FindYourHouseService {
 
     constructor(private http: HttpClient) { }
   
-    saveData(): Observable<Yad2Response> {
-      return this.http.get<Yad2Response>(`${this.apiUrl}/search`);
+    saveData(currentPage = 0): Observable<Yad2Response> {
+      return this.http.post<Yad2Response>(`${this.apiUrl}/search`, {currentPage: currentPage });
     }
 
     getHomeDetails(): Observable<message> {

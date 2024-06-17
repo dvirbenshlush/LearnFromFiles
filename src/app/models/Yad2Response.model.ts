@@ -1,6 +1,7 @@
 export interface Yad2Response {
     message: message[];
-}
+    countOfPages: number;
+  }
 
 export interface message {
     HomeTypeText: string;

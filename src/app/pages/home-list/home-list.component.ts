@@ -15,11 +15,12 @@ import { HomeDetailsDialogComponent } from '../../../shared/dialogs/home-details
     imports: [HomeCardComponent]
 })
 export class HomeListComponent implements OnInit {
-
-
+  
+  currentPage: number = 0;
+  countOfPages: number = 0;
   properties: message[] = []; // Update the type of 'properties' to match the imported module or type declarations
   homeDetails: message | undefined;
-
+  pageArray: number[] | undefined;
   constructor(public dialog: MatDialog, private findYourHouseService: FindYourHouseService, private router: Router) {
 
   }
@@ -28,7 +29,8 @@ export class HomeListComponent implements OnInit {
     this.findYourHouseService.saveData().subscribe(response => {
       this.findYourHouseService.setHomeListDetails(response)
       this.properties = response.message;
-      console.log(this.properties)
+      this.countOfPages = response.countOfPages;
+      this.pageArray = Array.from({length: this.countOfPages}, (_, i) => i + 1);
       
     })
   }
@@ -60,6 +62,36 @@ export class HomeListComponent implements OnInit {
     });
   }
 
+
+  nextPage() {
+    if(this.currentPage < this.countOfPages) {
+      this.currentPage++;
+      this.getHomeDetails(this.currentPage);
+    }
+  }
+  
+  goToPage(index: any) {
+    if(index <= this.countOfPages) {
+      this.currentPage = index;
+      this.getHomeDetails(this.currentPage);
+    }  
+  }
+  
+  previousPage() {
+    if(this.currentPage > 0) {
+        this.currentPage--;
+        this.getHomeDetails(this.currentPage);
+    }
+  }
+
+  getHomeDetails(pageIndex: number) {
+    this.findYourHouseService.saveData(pageIndex).subscribe(response => {
+      this.findYourHouseService.setHomeListDetails(response)
+      this.properties = response.message;
+      console.log(this.properties)
+      
+    })  
+  }
 
 }
 
