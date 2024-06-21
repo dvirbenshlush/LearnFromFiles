@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { GoogleMapsModule } from "@angular/google-maps";
 import { Loader } from "@googlemaps/js-api-loader"
 import { map } from 'rxjs';
-import { message } from '../../models/Yad2Response.model';
+import { HousesArray } from '../../models/Yad2Response.model';
 import { FindYourHouseService } from '../../services/findYourHouse.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeDetailsComponent implements AfterViewInit, OnInit{
       // ...additionalOptions,
   });
 
-  homeDetails!: any;
+  homeDetails!: HousesArray;
   options!: google.maps.Map;
 
   constructor(private findYourHouseService: FindYourHouseService) { 

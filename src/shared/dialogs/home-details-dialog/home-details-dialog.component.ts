@@ -14,13 +14,14 @@ import { environment } from '../../../environments/environment';
   styleUrl: './home-details-dialog.component.scss'
 })
 export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
+  [key: string]: any;
 
   loader = new Loader({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
       version: "weekly",
       // ...additionalOptions,
   });
-
+  marker: any;
   homeDetails!: any;
   options!: google.maps.Map;
   houseImagesArray: any;
@@ -59,7 +60,18 @@ export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
 
   ngOnInit(): void {
   
-    this.houseImagesArray = this.data.images;  
+    this.houseImagesArray = this.data.images; 
+    this.callFunctionByName('test'); 
+  }
+
+
+
+  callFunctionByName(functionName: string) {
+    if (this[functionName] && typeof this[functionName] === 'function') {
+      this[functionName]();
+    } else {
+      console.log(`Function ${functionName} does not exist`);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -75,10 +87,19 @@ export class HomeDetailsDialogComponent implements AfterViewInit, OnInit{
           zoom: 8,
       });
     });
+
+    const marker = new google.maps.Marker({
+      position: { lat:  this.data.geo_location.lat, lng: this.data.geo_location.lon },
+      map: this.options,
+    });
   }
 
   onClose() {
     this.dialogRef.close();
+  }
+
+  test() {
+    console.log('test')
   }
       
 }

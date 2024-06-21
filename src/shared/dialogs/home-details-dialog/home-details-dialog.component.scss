@@ -1,21 +1,50 @@
 .container {
-    // display: flex;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+  max-height: 90vh; /* התאמת גובה הדיאלוג */
+  overflow: hidden; /* מניעת גלילה על הדיאלוג */
+}
 
-  }
-  
-  .map-container {
-    width: 30%; /* או כל ערך של רוחב שברצונך */
-    position: relative; /* אם אתה משתמש במפה במעמד מוחלט */
-    // padding-bottom: 10px; /* לדוגמה */
-    margin-top: 20px;
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
 
-  }
-  
-  .content-container {
-    width: 50%; /* או כל ערך של רוחב שברצונך */
-    margin-left: 100px;
-    /* אם אתה רוצה שהתוכן יהיה צמוד למפה, כדאי להשתמש ב padding כדי להפריד בין השניים */
-    // padding-left: 10px; /* לדוגמה */
-  }
-  
+.carousel-container {
+  width: 300px;
+}
+
+.map-container {
+  width: 300px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.content-container {
+  width: 50%;
+  margin-left: 20px;
+  // overflow: hidden; /* מניעת גלילה על הדיאלוג */
+}
+
+mat-dialog-content {
+  max-height: 40vh; /* התאמת גובה המקסימלי של התוכן */
+  // overflow: hidden; /* מניעת גלילה על הדיאלוג */
+}
+
+.info-content {
+  max-height: 100px; /* גובה התוכן המוצג לפני ה-"See more" */
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.info-content.expanded {
+  max-height: none; /* גובה התוכן המורחב */
+  overflow-y: auto; /* גלילה פנימית של התוכן */
+}
+
+.see-more {
+  cursor: pointer;
+  color: blue;
+}

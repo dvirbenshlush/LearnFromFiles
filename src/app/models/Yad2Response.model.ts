@@ -1,9 +1,9 @@
 export interface Yad2Response {
-    message: message[];
+    housesArray: HousesArray[];
     countOfPages: number;
   }
 
-export interface message {
+export interface HousesArray {
     HomeTypeText: string;
     HomeTypeID: number;
     MinFloor: number;

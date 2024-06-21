@@ -1,5 +1,5 @@
 <div class="py-12 list-container grid grid-cols-4 gap-4 ">
-    @for (property of properties; track $index){
+    @for (property of housesArray; track $index){
         <div class="w-full  dark:text-gray-800" style="margin-top: 30px;">
             <div class="w-full p-2">
                 <app-home-card (click)="openDialog($index)" [data]="property"></app-home-card>

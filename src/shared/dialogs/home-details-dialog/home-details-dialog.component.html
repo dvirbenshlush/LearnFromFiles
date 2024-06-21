@@ -42,7 +42,7 @@
         <h2 mat-dialog-title>Price: {{data.Price}} ₪</h2>
         <mat-dialog-content>
             @if (showMore) { <p>{{data.Info}}</p>
-                <p [ngClass]="{'collapsed': !showMore}">
+                <p class="info-content" [ngClass]="{'collapsed': !showMore}">
                     {{data.Info}}
                     <span class="see-more" (click)="showMore = !showMore">{{showMore ? 'See less' : 'See more'}}</span>
                 </p>
