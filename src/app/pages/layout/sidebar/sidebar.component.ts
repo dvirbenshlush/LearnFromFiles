@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +11,12 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  isLoggedIn: boolean = this.authService.isLoggedIn //|| (sessionStorage && sessionStorage?.getItem('isLoggedIn') == 'true');
+
   states = [
     {name: 'Alabama', capital: 'Montgomery'},
     {name: 'Alaska', capital: 'Juneau'},
@@ -62,4 +69,26 @@ export class SidebarComponent {
     {name: 'Wisconsin', capital: 'Madison'},
     {name: 'Wyoming', capital: 'Cheyenne'},
   ];
+  
+  localhostUrl: string = this.router.url.replace('/login','');
+
+  ngOnInit(): void {
+    const sessionStorageLoggedIn = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('isLoggedIn') : null;
+    if (this.isLoggedIn || sessionStorageLoggedIn) {
+      console.log('can activate true');
+      this.isLoggedIn = true;
+    }
+  }
+
+  signOut() {
+    this.authService.logout();
+  }
+
+  signIn() {
+    this.router.navigate([this.localhostUrl + '/login']);
+  }
+
+  signUp() {
+    this.router.navigate([this.localhostUrl + '/register']);
+  }
 }

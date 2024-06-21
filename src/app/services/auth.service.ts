@@ -49,6 +49,7 @@ export class AuthService {
     signOut(this.auth).then(() => {
       localStorage.removeItem('token');
       sessionStorage?.removeItem('isLoggedIn')
+      this.isLoggedIn = false;
       this.router.navigate(['/login']);
     }, err => {
       alert(err.message);

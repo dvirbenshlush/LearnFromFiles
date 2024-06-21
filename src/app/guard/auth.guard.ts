@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const isLoggedIn = this.authService.isLoggedIn;
-
+    debugger
     if (isPlatformBrowser(this.platformId)) {
       const sessionStorageLoggedIn = sessionStorage?.getItem('isLoggedIn');
       if (isLoggedIn || sessionStorageLoggedIn) {
@@ -42,9 +42,11 @@ export const canActivateGuard: CanActivateFn = (
       console.log('can activate true');
       return true;
     }
+    else {
+      console.log('can activate false');
+      router.navigate(['/login']);
+    }
   }
 
-  console.log('can activate false');
-  router.navigate(['/login']);
   return false;
 };
